@@ -1,17 +1,17 @@
 # Intern Personeelsdashboard (Demo)
 
-Dit is een demo-project van een interne dashboard-applicatie. Het is gebouwd om de communicatie en planning binnen een kantoor te verbeteren.
+Dit is een demo-project van een intern dashboard, ontworpen als een dynamisch "smoelenboek" (wie-is-wie overzicht) voor een organisatie.
+
+Het hoofddoel is om snel een overzicht te krijgen van alle medewerkers en hun status.
 
 ## Hoofdfuncties
-Het dashboard heeft functies voor het weergeven van personeelsinformatie, zoals:
-* Teamindeling
-* Beschikbaarheid (wie is er op kantoor of andere locaties)
-* rol
-* Badges
-* Profile foto (optione - mag ook leeg zijn)
-* contactgegevens
+Het dashboard toont een overzicht van alle medewerkers met:
+* Profielfoto
+* Volledige naam en Functietitel/Rol
+* Huidige beschikbaarheid (bijv. Welke Datum, op kantoor, thuiswerken, afwezig)
+* Behaalde badges of certificeringen
 
-Deze tool is ontworpen om handmatige planning te vervangen en de samenwerking efficiënter te maken.
+Deze tool centraliseert personeelsinformatie die anders verspreid zou zijn, waardoor het makkelijker wordt om collega's te vinden en hun expertise te zien.
 
 ## Technologieën
 * PHP
@@ -22,3 +22,4 @@ Deze tool is ontworpen om handmatige planning te vervangen en de samenwerking ef
 
 ---
 **Let op:** Dit was een stageproject. De code is functioneel, maar bevat een mix van Nederlandse en Engelse variabelen en commentaar.
+
