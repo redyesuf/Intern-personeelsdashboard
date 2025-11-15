@@ -1,0 +1,603 @@
+
+/* ===============================
+    Root Variables
+=============================== */
+:root {
+    --primary-color: #4CAF50; /* Green */
+    --secondary-color: #9C27B0; /* Purple */
+    --accent-color: #FFC107; /* Amber */
+    --neutral-color: rgba(164, 245, 164, 0.6);
+    --text-color: #333;
+    --button-hover-color: #388E3C; /* Darker Green */
+    --button-text-color: #fff;
+    --TechnoPurple: #44205F;
+    --Col1: #44205F;
+    --Col2: #94C01F;
+    --Col3: #3b1c53;
+    --Col4: rgba(59, 28, 83, 0.6);
+    --Col5: rgb(79, 39, 110);
+    --Col6: rgb(38, 19, 53);
+}
+
+/* ===============================
+    Global Styles
+=============================== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 95%;
+    margin: auto;
+    padding-top: 20px;
+}
+
+#title {
+    margin-top: 0;
+    font-size: 40px;
+    color: var(--text-color);
+}
+
+h2 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* ===============================
+    Keyframes
+=============================== */
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+/* ===============================
+    Buttons
+=============================== */
+button,
+.secondary-button {
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    margin: 4px 2px;
+}
+
+button:hover {
+    background-color: var(--button-hover-color);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.secondary-button {
+    background-color: var(--secondary-color);
+    color: var(--TechnoPurple);
+    margin: 4px 2px;
+    display: inline-block;
+}
+
+.secondary-button:hover {
+    background-color: #7B1FA2; /* Darker Purple */
+}
+
+#deleted-people-button {
+    margin-top: 1vh;
+    margin-left: auto;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* ===============================
+    Forms and Inputs
+=============================== */
+input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* ===============================
+    Sections
+=============================== */
+#add-filter-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 10px;
+}
+
+#search-filter,
+#add-employee-box {
+    background-color: var(--Col2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#search-filter input,
+#search-filter select {
+    margin-right: 10px;
+}
+
+.filter-elements {
+    margin: 10px 20px;
+}
+
+.filter-lists {
+    width: 10vw;
+    text-align: center;
+}
+
+/* ===============================
+    Tables
+=============================== */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* table thead {
+    background-color: var(--Col2);
+} */
+
+th,
+td {
+    border: 1px solid #5e5e5e;
+    padding: 12px;
+    text-align: left;
+}
+
+thead {
+    background-color: white;
+}
+
+td {
+    height: 2vh;
+}
+
+.content-table {
+    background-color: var(--TechnoPurple);
+    margin: 20px 10px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 10px 15px rgba(59, 28, 83, 0.5);
+}
+
+#attendance-table {
+    margin: 0;
+}
+
+#h2-Deleted,
+#h2-Medewerker {
+    font-weight: 700;
+    font-size: 2.3em;
+    margin: 0;
+    margin-left: 1vw;
+    color: white;
+}
+
+.status-options {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.status-options button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* .table-success { background-color: #d4edda; }
+.table-danger { background-color: #f8d7da; }
+.table-warning { background-color: #fff3cd; } */
+
+.location-cell.hovered {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+#deleted-employees-table tbody {
+    background-color:#FFEBEE; 
+}
+
+
+/* ===============================
+    Row Highlighting
+=============================== */
+/* tr.present {
+    background-color: #A5D6A7;
+    transition: background-color 0.2s ease;
+}
+
+tr.absent {
+    background-color: #e66a6a;
+}
+
+tr.sick {
+    background-color: yellow;
+}
+
+.present:hover {
+    background-color: #acf0ac;
+}
+
+.absent:hover {
+    background-color: #db6262;
+} */
+
+
+/* ===============================
+    Links Inside Table
+=============================== */
+.location {
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--TechnoPurple);
+    user-select: none;
+}
+
+.location:hover {
+    color: var(--secondary-color);
+}
+
+/* ===============================
+    Cards and Alerts
+=============================== */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.alert {
+    padding: 20px;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.alert.success {
+    background-color: var(--primary-color);
+}
+
+.alert.info {
+    background-color: var(--accent-color);
+}
+
+.alert.warning {
+    background-color: #FF5722; /* Deep Orange */
+}
+
+/* ===============================
+    Footer
+=============================== */
+footer {
+    background-color: var(--neutral-color);
+    padding: 20px;
+    text-align: center;
+    color: var(--button-text-color);
+    border-top: 1px solid #ccc;
+}
+
+/* ===============================
+    Modals
+=============================== */
+.ModalButtons {
+    width: 32px;  /* Adjust this value to make icons bigger */
+    height: 32px; 
+    color: white; 
+}
+
+/* If you want specific icons to be larger */
+#open-upload-badge-page,
+#open-assign-badge-page, #open-filter-modal {
+    width: 40px;  /* Make these specific icons bigger */
+    height: 40px;
+}
+
+#filter-modal,
+#add-employee-modal {
+    display: none;
+    position: relative;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    overflow: auto;
+    margin: 3vh;
+}
+
+#employee-X,
+#filter-X {
+    position: absolute; /* Position relative to the parent */
+    top: 0; /* Align to the top */
+    right: 0; /* Align to the right */
+    background-color: #4CAF50;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#employee-X:hover,
+#filter-X:hover,
+.ModalButtons:hover {
+    cursor: pointer;
+}
+
+.ModalButtons {
+    float: right;
+    width: 4.5vh;
+    margin: 10px;
+}
+
+#deleted-employee-modal {
+    display: none;
+}
+
+/* ===============================
+    Miscellaneous
+=============================== */
+.attendance-names {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/* ===============================
+    Toasts (Corner popup thingy)
+=============================== */
+
+
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    animation: fade-in 0.5s;
+    pointer-events: none;
+}
+
+.toast.success { background-color: var(--primary-color); }
+.toast.error { background-color: #e74c3c; }
+.toast.info { background-color: var(--accent-color); }
+
+
+
+
+
+/* ===============================
+    Pop-Up profile
+=============================== */
+
+#popup-profile {
+    display: none; 
+}
+.attendance-names {
+color: #3b1c53; 
+font-weight: bold;
+cursor: pointer; 
+transition: color 0.2s ease-in-out; 
+}
+
+.attendance-names:hover {
+color: #0056b3; 
+text-decoration: underline; 
+}
+
+#profile-image, #profile-badge {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 3px solid #007bff; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin: 20px auto; 
+    display: block; 
+}
+
+.col-md-6 {
+    position: relative;
+    padding: 10px;
+}
+.col-md-6:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #ddd;
+}
+
+
+
+
+
+
+/* ===============================
+    additional styles for adding new user added by Redwan
+=============================== */
+#additional_info, #role, #name, #email {
+    height: 40px;
+    width: 100%;
+}
+
+
+
+
+.actions-cell .dropdown-menu {
+    min-width: 120px;
+}
+.actions-cell button {
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+/* Toast Stlying */
+/* .bg-success { background-color: var(--Col2)!important; } */
+.bg-error { background-color: #dc3545!important; } 
+
+
+
+/* Table improvements */
+.table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: var(--Col2);
+    color: white;
+    font-weight: 600;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(148, 192, 31, 0.1);
+} */
+
+/* Action dropdown icon */
+ .actions-cell img {
+    filter: invert(28%) sepia(10%) saturate(2000%) hue-rotate(250deg) brightness(90%) contrast(90%);
+}
+
+/* Availability checkboxes */
+#availability {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+#availability label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+/* ===============================
+    Tooltip styling
+=============================== */
+
+#badge-tooltip{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    max-height: 5vh;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: "Inter", sans-serif;
+    z-index: 10000;
+    transition: opacity 0.2s ease;
+    min-width: 15vw;
+    text-align: center;
+    align-items: center;
+    font-size: 1.2rem;
+    max-width: 40vw;
+    margin: 0;
+}
+
+
+.custom_tooltip {
+    position: absolute;
+    border: 1px solid var(--Col1);
+    background-color: var(--Col3);
+    color: var(--Col2);
+    font-family: var(--MainFont);
+    display: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px var(--Col3);
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

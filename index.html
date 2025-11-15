@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" href="img/soft-dev.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Dashboard Aanwezigheid</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <section id="toast-container"></section>
+    <div class="container">
+        <h1 id="title">Dashboard Aanwezigheid</h1>
+                <section id="add-employee-modal">
+                    <section id="add-employee-box">
+                        <h2>Nieuwe Medewerker Toevoegen</h2>
+                        <p id="employee-X">&Cross;</p>
+                        <form id="add-employee-form" enctype="multipart/form-data">
+                             <!-- Naam -->
+                            <div class="mb-3 row">
+                                <label for="name" class="col-sm-2 col-form-label">Naam:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="Schrijf uw volledige naam" required>
+                                </div>
+                            </div>
+
+                            <!-- Rol -->
+                            <div class="mb-3 row">
+                                <label for="role" class="col-sm-2 col-form-label">Rol:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="role" name="role" class="form-control" placeholder="Schrijf uw rol..." required>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3 row">
+                                <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                                <div class="col-sm-10">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="example@Stagebedrijfleiden.nl" required>
+                                </div>
+                            </div>
+
+                            <!-- Bio -->
+                            <div class="mb-3">
+                                <label for="bio">Bio:</label>
+                                <input type="text" id="bio" name="bio" class="form-control" maxlength="70" placeholder="Schrijf kort over jezelf...">
+                            </div>
+
+                            <!-- Profiel Beeld -->
+                            <div class="mb-3">
+                                <label for="profile_picture">Profiel Beeld:</label>
+                                <input type="file" id="profile_picture" name="profile_picture" class="form-control" accept="image/*">
+                            </div>
+
+                            <label>Beschikbaarheid:</label>
+                            <div id="availability">
+                                <label for="monday">Maandag</label>
+                                <input type="checkbox" id="monday" name="monday" >
+                               
+
+                                <label for="tuesday">Dinsdag</label>
+                                <input type="checkbox" id="tuesday" name="tuesday" >
+                              
+
+                                <label for="wednesday">Woensdag</label>
+                                <input type="checkbox" id="wednesday" name="wednesday">
+                               
+
+                                <label for="thursday">Donderdag</label>
+                                <input type="checkbox" id="thursday" name="thursday" >
+                               
+
+                                <label for="friday">Vrijdag</label>
+                                <input type="checkbox" id="friday" name="friday" >
+
+                            </div><br><br>
+
+
+                            <button type="submit">Voeg Toe</button>
+                        </form>
+                    </section>
+                </section>
+
+                <section id="filter-modal">
+                    <section id="search-filter">
+                        <h2 class="filter-elements">Filter</h1>
+                        <p id="filter-X">&Cross;</p>
+                        <input class="filter-elements" type="text" id="search-bar" placeholder="Zoek op naam..." oninput="filterSystem()">
+                        <select class="filter-elements filter-lists" id="filter-status" onchange="filterSystem()">
+                            <option value="">Alle</option>
+                            <option value="present">Aanwezig</option>
+                            <option value="absent">Afwezig</option>
+                            <option value="ziek">Ziek</option>
+                        </select>
+                        <select class="filter-elements filter-lists" id="filter-location" onchange="filterSystem()">
+                            <option value="">Alle locaties</option>
+                            <option value="Unknown">Onbekend</option>
+                            <option value="Stagebedrijf">Stagebedrijf</option>
+                        </select>
+                    </section>
+                </section>
+
+        <section class="content-table">
+            <img title="Voeg medewerker toe!" class="ModalButtons" src="img/add-64.png" id="open-employee-modal"></img>
+            <img title="Filter Mederwerkers" class="ModalButtons" src="img/filter.png" id="open-filter-modal"></img>
+            <a href="add_badge.php"><img title="Upload Badges" class="ModalButtons" src="img/upload-badge-icon.svg" id="open-upload-badge-page"></a>
+            <a href="assign_badge.php"><img title="Assign Badges" class="ModalButtons" src="img/modern-assign-badge-icon.svg" id="open-assign-badge-page"></a>
+
+            <h2 id="h2-Medewerker">Medewerkerslijst</h2>
+            <table id="attendance-table" class="table">
+                <thead>
+                    <tr>
+                        <th>Naam</th>
+                        <th>Locatie</th>
+                        <th>Status</th>
+                        <th>Acties</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Employees will be loaded dynamically here -->
+                </tbody>
+            </table>
+            <img id="deleted-people-button" src="img/Menu.png"></img>
+        </section>
+
+
+        <section id="deleted-employee-modal" class="content-table">
+            <h2 id="h2-Deleted">Verwijderde Medewerkers</h2>
+            <table id="deleted-employees-table">
+                <thead>
+                    <tr>
+                        <th>Naam</th>
+                        <th>Locatie</th>
+                        <th>Status</th>
+                        <th>Acties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Pop-up Profile Structure -->
+        <div id="profilePopup" class="modal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center w-100" id="profile-name">Naam</h5>
+                        <button type="button" class="btn-close" onclick="closePopup()"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="profile-image" src="uploads/profile_pictures/default_profile.png" alt="Profile Picture" 
+                             class="img-fluid mb-3" 
+                             style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; margin: auto;">
+                        <p><strong>Rol:</strong> <span id="profile-role"></span></p>
+                        <p><strong>Email:</strong> <span id="profile-email"></span></p>
+                        <p><strong>Bio:</strong> <span id="profile-bio"></span></p>
+                        <div class="row mt-4">
+                            <!-- Badges Section -->
+                            <div class="col-md-6 text-start">
+                                <p><strong>Badges:</strong></p>
+                                <div id="profile-badges" class="d-flex flex-wrap gap-2"></div>
+                            </div>
+                            <!-- Availability Section -->
+                            <div class="col-md-6 text-start">
+                                <p><strong>Beschikbaarheid:</strong></p>
+                                <div id="profile-availability" class="d-flex flex-wrap gap-3">
+                                    <span id="monday" class="availability-day">Maan: <span class="availability-status"></span></span>
+                                    <span id="tuesday" class="availability-day">Dins: <span class="availability-status"></span></span>
+                                    <span id="wednesday" class="availability-day">Woen: <span class="availability-status"></span></span>
+                                    <span id="thursday" class="availability-day">Dond: <span class="availability-status"></span></span>
+                                    <span id="friday" class="availability-day">Vrij: <span class="availability-status"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="toggleEditMode()">Bewerken</button>
+                        <button type="button" id="saveButton" class="btn btn-success d-none" onclick="saveChanges()">Opslaan</button>
+                        <button type="button" class="btn btn-secondary" onclick="closePopup()">Dicht</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+
+
+
+
+
+    </div>
+<!-- Add before closing body tag -->
+<div class="modal fade" id="deleteConfirmationModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bevestig Verwijdering</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Weet u zeker dat u deze medewerker wilt verwijderen?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuleren</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Verwijderen</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
